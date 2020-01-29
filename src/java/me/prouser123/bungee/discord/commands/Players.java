@@ -43,7 +43,7 @@ public class Players implements MessageCreateListener, BaseCommand
                     embed2.addField(entry.getKey(), players);
                 }
                 else {
-                    embed2.addField(entry.getKey(), "n/");
+                    embed2.addField(entry.getKey(), "n/a");
                 }
             }
             event.getChannel().sendMessage(embed2);
