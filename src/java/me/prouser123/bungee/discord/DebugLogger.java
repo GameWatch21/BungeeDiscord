@@ -2,25 +2,25 @@ package me.prouser123.bungee.discord;
 
 import java.util.logging.Level;
 
-public class DebugLogger {
-	
-	private boolean debugEnabled = false;
-	
-	public void info(String message) {
-		if (debugEnabled) {
+public class DebugLogger
+{
+	private boolean debugEnabled;
+
+	public void info(final String message) {
+		if (this.debugEnabled) {
 			Main.inst().getProxy().getLogger().log(Level.INFO, "[" + Main.inst().getDescription().getName() + ".DEBUG] " + message);
 		}
 	}
-	
+
 	public DebugLogger() {
+		this.debugEnabled = false;
 		try {
-			if (Main.inst().getConfig().getBoolean("debug-enabled")) {
-				debugEnabled = true;
+			Main.inst();
+			if (Main.getConfig().getBoolean("debug-enabled")) {
+				this.debugEnabled = true;
 				Main.inst().getLogger().info("Enabled debug logging.");
 			}
-		} catch (NullPointerException npex) {
-			// Coudn't find the boolean, just return for now.
-			return;
 		}
+		catch (NullPointerException npex) {}
 	}
 }
