@@ -4,6 +4,7 @@ import com.google.common.io.ByteStreams;
 import me.prouser123.bungee.discord.commands.MainCommand;
 import me.prouser123.bungee.discord.commands.Players;
 import me.prouser123.bungee.discord.commands.ServerInfo;
+import me.prouser123.bungee.discord.listener.PlayerListener;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
@@ -11,6 +12,7 @@ import net.md_5.bungee.config.YamlConfiguration;
 import org.javacord.api.entity.activity.ActivityType;
 
 import java.io.*;
+import java.util.NoSuchElementException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -61,6 +63,9 @@ public class Main extends Plugin
 		new Discord(getConfig().getString("token"));
 		Discord.api.setMessageCacheSize(10, 3600);
 		registerListeners.botCommands();
+		// Register Bungee Player Join/Leave Listeners
+		Main.registerListeners.playerJoinLeave();
+
 		this.timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -103,6 +108,19 @@ public class Main extends Plugin
 
 	private static class registerListeners
 	{
+		private static void playerJoinLeave() {
+			// Register Bungee Player Join/Leave Listeners
+			String jlcID = getConfig().getString("join-leave-chat-id");
+
+			try {
+				Main.inst().getProxy().getPluginManager().registerListener(Main.inst(), new PlayerListener(jlcID));
+				Main.inst().getLogger().info("Join Leave Chat enabled for channel: #" + Discord.api.getChannelById(jlcID).toString().replaceAll(".*\\[|\\].*", "") + " (id: " + jlcID + ")");
+			} catch (NoSuchElementException e) {
+
+				Main.inst().getLogger().info("Join Leave Chat disabled. Did you put a valid channel ID in the config?");
+			}
+		}
+
 		private static void botCommands() {
 			Main.inst().getLogger().info("Registering commands...");
 			Discord.api.addMessageCreateListener(new MainCommand());
