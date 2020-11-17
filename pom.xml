@@ -65,6 +65,7 @@
                   <include>com.neovisionaries:nv-websocket-client</include>
                   <include>org.apache.logging.log4j:log4j-api</include>
                   <include>me.prouser123:bstatsplus</include>
+                  <include>io.vavr:vavr</include>
                 </includes>
               </artifactSet>
             </configuration>
@@ -93,7 +94,7 @@
     <dependency>
       <groupId>org.javacord</groupId>
       <artifactId>javacord</artifactId>
-      <version>3.0.1</version>
+      <version>3.1.1</version>
       <type>pom</type>
     </dependency>
     <!-- bStatsPlus -->
@@ -101,6 +102,12 @@
       <groupId>me.prouser123</groupId>
       <artifactId>bstatsplus</artifactId>
       <version>1.4.0.1</version>
+    </dependency>
+    <!-- missing library fix -->
+    <dependency>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+      <version>0.9.3</version>
     </dependency>
   </dependencies>
   <properties>
