@@ -17,11 +17,11 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PostLoginEvent event) {
-        channel.sendMessage("`" + event.getPlayer().getName() + "`さんが参加しました");
+        channel.sendMessage("`" + event.getPlayer().getName() + "` Has Joined the Network");
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerDisconnectEvent event) {
-        channel.sendMessage("`" + event.getPlayer().getName() + "`さんが退出しました");
+        channel.sendMessage("`" + event.getPlayer().getName() + "` Has Left the Network");
     }
 }
