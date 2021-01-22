@@ -32,4 +32,4 @@ jobs:
       if: success()
       with:
           name: DtoB
-          path: target/
+          path: target/BungeeDiscord-*.*.*.jar
