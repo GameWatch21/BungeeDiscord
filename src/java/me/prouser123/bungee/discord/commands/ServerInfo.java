@@ -51,7 +51,7 @@ public class ServerInfo implements MessageCreateListener, BaseCommand
 				e.printStackTrace();
 			}
 			final EmbedBuilder embed = new EmbedBuilder().setAuthor(Main.getConfig().getString("server-name") + " Server Information")
-					.addInlineField("Players", Main.inst().getProxy().getPlayers().size() + "/" + Main.inst().getProxy().getConfig().getPlayerLimit())
+					.addInlineField("Players", Main.inst().getProxy().getPlayers().size() + "/" + "50")
 					.addInlineField("Uptime", uptime_output)
 					.addInlineField("Memory", Runtime.getRuntime().freeMemory() / 1024L / 1024L + "/" + Runtime.getRuntime().totalMemory() / 1024L / 1024L + " MB free")
 					.addInlineField("Servers", Integer.toString(Main.inst().getProxy().getServers().size()))
