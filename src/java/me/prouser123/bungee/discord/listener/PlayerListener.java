@@ -17,11 +17,11 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PostLoginEvent event) {
-        channel.sendMessage("`" + event.getPlayer().getName() + "` Has Joined the Network");
+        channel.sendMessage("[**" + event.getPlayer().getName() + "**] Has Joined Dogemine 2 Server");
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerDisconnectEvent event) {
-        channel.sendMessage("`" + event.getPlayer().getName() + "` Has Left the Network");
+        channel.sendMessage("[**" + event.getPlayer().getName() + "**] Has Left Dogemine 2 Server");
     }
 }
